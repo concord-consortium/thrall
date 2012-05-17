@@ -14,7 +14,13 @@ We wanted something that would let us easily ssh into servers without looking up
 
 Check out this repo:
 
-    git co git@github.com:concord-consortium/thrall.git
+    $ git co git@github.com:concord-consortium/thrall.git
+    $ cd thrall
+
+Install deps:
+
+    $ rvm use ruby-1.9.3-p125@serverator --create
+    $ bundle install
 
 And then execute:
 
