@@ -1,7 +1,15 @@
 # Thrall
 
-A command line tool to connect to virtual hosts at CC.
+A command–line tool to connect to v-hosts at CC.
 
+I wanted something that would let me easily ssh into the server without looking up which one it was in the config/deploy/*.rb folder.
+
+
+* we keep the mapping of application names, to machine names in a git repo [TODO]
+* we make a command uses that mapping to run the appropriate ssh command  [✔]
+* ideally it would be integrated with command completion so tab-tab would show the list of applications. [TODO]
+* the command would have an "update" option to update its git repository. [TODO]
+* we could expand this to also open a browser pointed to the application. [✔]
 
 ## Installation
 
@@ -21,11 +29,11 @@ Or install it yourself as:
 
 Connect to a host:
 
-   thrall ssh <shortname>
+    thrall ssh <shortname>
 
 open a browser:
 
-   thrall www <shortname>
+    thrall www <shortname>
 
 ## TODO:
 
