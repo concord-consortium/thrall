@@ -12,6 +12,8 @@
 # dump / upload db?
 # local repo map?
 
+require 'yaml'
+
 module Thrall
   DEFAULT_USER        = 'deploy'
   DEFAULT_CONFIG_FILE = File.join(File.dirname(__FILE__),"thrall.yml")
@@ -44,11 +46,6 @@ module Thrall
       fqdn = self.host(short_name)['fqdn']
       "open http://#{fqdn}"
     end
-
-    def ssh(short_name)
-      exec ssh_cmds(short_name)
-    end
-
   end
 end
 
