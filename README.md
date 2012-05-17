@@ -1,12 +1,13 @@
-# Serverator
+# Thrall
 
-TODO: Write a gem description
+A command line tool to connect to virtual hosts at CC.
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'serverator'
+    gem 'thrall'
 
 And then execute:
 
@@ -14,11 +15,26 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install serverator
+    $ gem install thrall
 
 ## Usage
 
-TODO: Write usage instructions here
+Connect to a host:
+
+   thrall ssh <shortname>
+
+open a browser:
+
+   thrall www <shortname>
+
+## TODO:
+
+* list known hosts
+* better config file hosting
+* use gist or github to maintain server list
+* change into virtual servers directory
+* more tests
+
 
 ## Contributing
 
