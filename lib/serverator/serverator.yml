@@ -1,0 +1,30 @@
+--- 
+
+rites-dev:
+  fqdn: rites.dev.concord.org
+  host: otto.concord.org
+  apache: otto.concord.org
+  path: /web/rites.concord.org
+
+rites-staging:
+  fqdn: rites-investigations.staging.concord.org
+  host: 63.138.119.196
+  apache: seymour.concord.org
+  path: /web/portal
+
+rites-production:
+  fqdn: rites-investigations.concord.org
+  host: bumblebeeman.concord.org
+  apache: seymour.concord.org
+  path: /web/portal
+
+sg-authoring-staging:
+  fqdn: smartgraphs-authoring.staging.concord.org
+  host: ruby-vm8.concord.org
+  apache: seymour.concord.org
+  path: /web/portal
+
+sg-authoring-production:
+  fqdn: smartgraphs-authoring.concord.org
+  host: ruby-vm10.concord.org
+  path: /web/portal
