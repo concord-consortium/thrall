@@ -12,9 +12,9 @@
 # dump / upload db?
 # local repo map?
 
-module Serverator
+module Thrall
   DEFAULT_USER        = 'deploy'
-  DEFAULT_CONFIG_FILE = File.join(File.dirname(__FILE__),"serverator.yml")
+  DEFAULT_CONFIG_FILE = File.join(File.dirname(__FILE__),"thrall.yml")
 
   class Core
     attr_accessor :host_defs

@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/serverator/version', __FILE__)
+require File.expand_path('../lib/thrall/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Noah Paessel"]
@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "serverator"
+  gem.name          = "thrall"
   gem.require_paths = ["lib"]
-  gem.version       = Serverator::VERSION
+  gem.version       = Thrall::VERSION
 
   gem.add_development_dependency "rspec", "~> 2.6"
   gem.add_dependency "thor"

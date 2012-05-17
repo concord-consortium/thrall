@@ -1,12 +1,12 @@
-require 'serverator'
-describe Serverator::Serverator do
+require 'thrall'
+describe Thrall::Core do
   
   before :each do
     opts = {}
     opts[:host_defs] = {
       'foo' => {'host' => 'bar.fake.com', 'fqdn' => "foo.fake.com"}
     }
-    @serverator = Serverator::Serverator.new(opts)
+    @serverator = Thrall::Core.new(opts)
   end
 
   it "host should return a complete server name" do

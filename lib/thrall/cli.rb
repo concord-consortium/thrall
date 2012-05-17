@@ -5,11 +5,9 @@
 # cc list [exp]     -- print mapping for hosts matching exp
 
 require 'thor'
-require 'Serverator'
-module Serverator
-  DEFAULT_USER        = 'deploy'
-  DEFAULT_CONFIG_FILE = File.join(File.dirname(__FILE__),"serverator.yml")
+require 'thrall'
 
+module Thrall
   class CLI < Thor
     desc "shh short_name", "connect to the server responsible for short_name (eg: rites-dev)"
     def ssh(short_name)
@@ -19,12 +17,8 @@ module Serverator
 
     desc "www short_name", "open a browser to short_name (eg: rites-dev)"
     def www(short_name)
-      @server = Serverator::Core.new()
+      @server = Core.new()
       exec @server.www_cmds(short_name)
     end
   end
 end
-
-# me = Serverator::Cli.new()
-# me.ssh(ARGV[0])
-
