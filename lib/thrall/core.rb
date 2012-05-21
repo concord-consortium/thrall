@@ -28,7 +28,7 @@ module Thrall
       self.user        = opts[:user]        || DEFAULT_USER
       self.host_defs   = opts[:host_defs]   || self.load_definitions
     end
-    
+
     def load_definitions
       YAML.load_file(self.config_file)
     end
@@ -37,9 +37,25 @@ module Thrall
       self.host_defs[short_name]
     end
 
-    def ssh_cmds(short_name)
+    def list(short_name)
+      matching = self.host_defs.select {|k,v| k.match(/short_name/) }
+      matching.each_pair do |name,record|
+        puts "name: #{name}, host:#{record[:host]}, path:#{record[:path]}, FQDN:#{record[:fqdn]}"
+      end
+    end
+
+    def screen_cmds(short_name)
+      self.ssh_cmds(short_name, "screen -xR #{short_name}")
+    end
+
+    def ssh_cmds(short_name,remote_cmd=nil)
       host = self.host(short_name)['host']
-      "ssh #{self.user}@#{host}"
+      bastion = self.host(short_name)['bastion']
+      
+      command = "ssh -t #{self.user}@#{host}" 
+      command << " #{remote_cmd}" if remote_cmd
+      command = "ssh -At #{bastion} '#{command}'" if bastion
+      command
     end
 
     def www_cmds(short_name)

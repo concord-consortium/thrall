@@ -11,6 +11,7 @@ rites-staging:
   host: 63.138.119.196
   apache: seymour.concord.org
   path: /web/portal
+  bastion: seymour.concord.org
 
 rites-production:
   fqdn: rites-investigations.concord.org
