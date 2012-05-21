@@ -5,7 +5,8 @@ describe Thrall::Core do
     before :each do
       opts = {}
       opts[:host_defs] = {
-        'foo' => {'host' => 'bar.fake.com', 'fqdn' => "foo.fake.com"}
+        'foo' => {'host' => 'bar.fake.com', 'fqdn' => "foo.fake.com"},
+        'baz' => {'host' => 'bar.fake.com', 'fqdn' => "baz.fake.net"}
       }
       @serverator = Thrall::Core.new(opts)
     end
@@ -24,6 +25,16 @@ describe Thrall::Core do
 
     it "can use remote screens" do
       @serverator.screen_cmds("foo").should == "ssh -t deploy@bar.fake.com screen -xR foo"
+    end
+
+    it "can find servers" do
+      @serverator.find('blarg').should be_empty
+      @serverator.find('').should have(2).host      # all hosts
+      @serverator.find('foo').should have(1).host   # by short name
+      @serverator.find('baz').should have(1).host   # by short name
+      @serverator.find('fake').should have(2).host  # by fqdn
+      @serverator.find('com').should have(1).host   # by fqdn
+      @serverator.find('net').should have(1).host   # by fqdn
     end
   end
 

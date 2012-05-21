@@ -37,11 +37,23 @@ module Thrall
       self.host_defs[short_name]
     end
 
+    def find(short_name)
+      return self.host_defs.select {|k,v| k.match(short_name) or v['fqdn'].match(short_name) }
+    end
+
     def list(short_name)
-      matching = self.host_defs.select {|k,v| k.match(/short_name/) }
-      matching.each_pair do |name,record|
-        puts "name: #{name}, host:#{record[:host]}, path:#{record[:path]}, FQDN:#{record[:fqdn]}"
+      matching = self.find(short_name)
+      matching.each_pair do |name, record|
+        self.print_host_record(name, record)
       end
+    end  
+          
+    def print_host_record(name,record)
+        puts "#{name}"
+        puts "\tHost: #{record['host']}"
+        puts "\tPath: #{record['path']}"
+        puts "\tFqdn: #{record['fqdn']}"
+        puts "\tBastion: #{record['bastion']}"
     end
 
     def screen_cmds(short_name)

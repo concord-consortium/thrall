@@ -29,7 +29,7 @@ module Thrall
     end
 
     desc "list [regexp]", "list short_names matching [regexp]"
-    def list(short_name)
+    def list(short_name="")
       @server = Core.new()
       @server.list(short_name)
     end
