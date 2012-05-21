@@ -31,11 +31,19 @@ If everything goes OK, you should be now have a "thor" executable in your path f
 
 ## Usage
 
+List known servers matching <regexp> or all:
+
+    thrall list <regexp>
+
 Connect to a host:
 
     thrall ssh <shortname>
 
-open a browser:
+Connect to a host with screen:
+
+    thrall screen <shortname>
+
+Open a browser:
 
     thrall www <shortname>
 
@@ -43,7 +51,7 @@ open a browser:
 ## TODO:
 
 * document desired behavior
-* 'thrall list' known hosts or regexp
 * shared config file & host list through gist or github.
 * ssh should cd into virtual servers directory.
-* write tests
+* project integration? ( check to see if we are in a RAILS project, look for .thrallrc file in current-dir? )
+
