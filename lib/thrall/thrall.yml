@@ -1,5 +1,4 @@
 --- 
-
 rites-dev:
   fqdn: rites.dev.concord.org
   host: otto.concord.org
@@ -18,14 +17,17 @@ rites-production:
   host: bumblebeeman.concord.org
   apache: seymour.concord.org
   path: /web/portal
+  bastion: seymour.concord.org
 
 sg-authoring-staging:
   fqdn: smartgraphs-authoring.staging.concord.org
   host: ruby-vm8.concord.org
   apache: seymour.concord.org
   path: /web/portal
+  bastion: seymour.concord.org
 
 sg-authoring-production:
   fqdn: smartgraphs-authoring.concord.org
   host: ruby-vm10.concord.org
   path: /web/portal
+  bastion: seymour.concord.org
