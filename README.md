@@ -19,7 +19,7 @@ Check out this repo:
 
 Install deps:
 
-    $ rvm use ruby-1.9.3-p125@serverator --create
+    $ rvm use ruby-1.9.3-p125@thrall --create
     $ bundle install
 
 And then execute:
