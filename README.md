@@ -26,7 +26,7 @@ And then execute:
 
     $ rake install
 
-If everything goes OK, you should be now have a "thor" executable in your path for your current ruby environment.
+If everything goes OK, you should be now have a "thrall" executable in your path for your current ruby environment.
 
 
 ## Usage
