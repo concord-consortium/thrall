@@ -6,7 +6,7 @@ describe Thrall::Core do
       opts = {}
       opts[:host_defs] = {
         'foo' => {'host' => 'bar.fake.com', 'fqdn' => "foo.fake.com"},
-        'baz' => {'host' => 'bar.fake.com', 'fqdn' => "baz.fake.net"}
+        'baz' => {'host' => 'bar.fake.com', 'fqdn' => "baz.fake.net", 'path' => "/tmp" }
       }
       @serverator = Thrall::Core.new(opts)
     end
@@ -16,7 +16,11 @@ describe Thrall::Core do
     end
 
     it "uses the user name in ssh commands" do
-      @serverator.ssh_cmds("foo").should == "ssh -t deploy@bar.fake.com"
+      @serverator.ssh_cmds("foo").should == "ssh -t deploy@bar.fake.com 'bash -l'"
+    end
+
+    it "tries to cd to path" do
+      @serverator.ssh_cmds("baz").should == "ssh -t deploy@bar.fake.com 'cd /tmp; bash -l'"
     end
 
     it "can open a webbrowser to the host" do
@@ -24,7 +28,7 @@ describe Thrall::Core do
     end
 
     it "can use remote screens" do
-      @serverator.screen_cmds("foo").should == "ssh -t deploy@bar.fake.com screen -xR foo"
+      @serverator.screen_cmds("foo").should == "ssh -t deploy@bar.fake.com 'screen -xR foo'"
     end
 
     it "can find servers" do
@@ -52,11 +56,11 @@ describe Thrall::Core do
     end
 
     it "uses the user name in ssh commands" do
-      @serverator.ssh_cmds("foo").should == "ssh -At bastion.fake.com 'ssh -t deploy@bar.fake.com'"
+      @serverator.ssh_cmds("foo").should == "ssh -At bastion.fake.com \"ssh -t deploy@bar.fake.com\ 'bash -l'\""
     end
 
     it "can use remote screens" do
-      @serverator.screen_cmds("foo").should == "ssh -At bastion.fake.com 'ssh -t deploy@bar.fake.com screen -xR foo'"
+      @serverator.screen_cmds("foo").should == "ssh -At bastion.fake.com \"ssh -t deploy@bar.fake.com 'screen -xR foo'\""
     end
   end
 

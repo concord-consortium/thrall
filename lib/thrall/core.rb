@@ -60,13 +60,14 @@ module Thrall
       self.ssh_cmds(short_name, "screen -xR #{short_name}")
     end
 
-    def ssh_cmds(short_name,remote_cmd=nil)
+    def ssh_cmds(short_name,remote_cmd="bash -l")
       host = self.host(short_name)['host']
+      cd   = ""
+      cd   = "cd #{self.host(short_name)['path']}; " if self.host(short_name)['path']
       bastion = self.host(short_name)['bastion']
       
-      command = "ssh -t #{self.user}@#{host}" 
-      command << " #{remote_cmd}" if remote_cmd
-      command = "ssh -At #{bastion} '#{command}'" if bastion
+      command = "ssh -t #{self.user}@#{host} '#{cd}#{remote_cmd}'" 
+      command = "ssh -At #{bastion} \"#{command}\"" if bastion
       command
     end
 
