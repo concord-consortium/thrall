@@ -50,8 +50,7 @@ Open a browser:
 
 ## TODO:
 
-* document desired behavior
-* shared config file & host list through gist or github.
-* ssh should cd into virtual servers directory.
+* bash auto completion support
+* command to append to users environment a bit (to support auto completion, &etc.)
 * project integration? ( check to see if we are in a RAILS project, look for .thrallrc file in current-dir? )
 
