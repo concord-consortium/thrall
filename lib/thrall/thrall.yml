@@ -31,3 +31,11 @@ sg-authoring-production:
   host: ruby-vm10.concord.org
   path: /web/portal
   bastion: seymour.concord.org
+
+itsisu-production:
+  fqdn: itsisu.portal.concord.org
+  host: ruby-vm5.concord.org
+  apache: seymour.concord.org
+  path: /web/portal
+  bastion: seymour.concord.org
+  
